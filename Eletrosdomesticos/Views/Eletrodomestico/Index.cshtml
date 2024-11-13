@@ -1,0 +1,40 @@
+﻿@model List<Eletrodomestico>
+<h1>Lista de Eletrodomésticos</h1>
+
+<table class=" table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>ConsumoEnergetico</th>
+            <th>Detalhes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Eletros in Model)
+        {
+            <tr>
+                <td>@Eletros.Marca</td>
+                <td>@Eletros.Modelo</td>
+                <td>@Eletros.ConsumoEnergetico</td>
+
+                <td>
+                    @if (Eletros is Geladeira)
+                    {
+     
+                        <strong>Freezer:</strong> @(((Geladeira)Eletros).TemFreezer ? "Sim" : "Não")
+
+                    }
+                    else if (Eletros is Televisor)
+                    {
+                        <strong>Tipo:</strong> @(((Televisor)Eletros).EhSmart ? "Smart" : "Não é smart")
+                    }
+                    else if (Eletros is Televisor)
+                    {
+                        <strong>Tipo:</strong> @(((Televisor)Eletros).EhSmart ? "Smart" : "Não é smart")
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
